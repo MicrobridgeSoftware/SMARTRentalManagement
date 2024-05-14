@@ -1,0 +1,563 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RentalManagementDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Holiday">
+    <Key>
+      <PropertyRef Name="HolidayId" />
+    </Key>
+    <Property Name="HolidayId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HolidayName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateOfHoliday" Type="datetime" Nullable="false" />
+    <Property Name="IsRecurringDate" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedBy" Type="varchar" MaxLength="25" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SystemSecurityConfiguration">
+    <Key>
+      <PropertyRef Name="SystemSecurityConfigurationId" />
+    </Key>
+    <Property Name="SystemSecurityConfigurationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EnableAutoLogOut" Type="bit" Nullable="false" />
+    <Property Name="AutoLogOutMinutes" Type="int" Nullable="false" />
+    <Property Name="AutoLockUserAccount" Type="bit" Nullable="false" />
+    <Property Name="NoOfUnsuccessfulAttempts" Type="int" Nullable="false" />
+    <Property Name="ImposePasswordChange" Type="bit" Nullable="false" />
+    <Property Name="PasswordValidityDays" Type="int" Nullable="false" />
+    <Property Name="AllowPasswordRepeat" Type="bit" Nullable="false" />
+    <Property Name="LastModifiedBy" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SystemUsers">
+    <Key>
+      <PropertyRef Name="SystemUserId" />
+    </Key>
+    <Property Name="SystemUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="25" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserImage" Type="image" />
+    <Property Name="AccountExpirable" Type="bit" Nullable="false" />
+    <Property Name="ActivePeriod" Type="int" />
+    <Property Name="RequireUserChange" Type="bit" Nullable="false" />
+    <Property Name="ExpirableValidationDate" Type="datetime" />
+    <Property Name="CurrentlyLoggedIn" Type="bit" />
+    <Property Name="LastPasswordChange" Type="datetime" />
+    <Property Name="SystemUserGroupId" Type="int" Nullable="false" />
+    <Property Name="AccountLocked" Type="bit" Nullable="false" />
+    <Property Name="StoreLocationId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedBy" Type="varchar" MaxLength="25" />
+    <Property Name="LastModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SystemUserSettings">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="MdiParentImage" Type="image" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'RentalManagementDB.dbo.SaleTransactionDeliveryView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SaleTransactionDeliveryView">
+    <Key>
+      <PropertyRef Name="SaleTransactionId" />
+      <PropertyRef Name="TransactionNo" />
+      <PropertyRef Name="TransactionDate" />
+      <PropertyRef Name="TransactionAmount" />
+      <PropertyRef Name="TaxAmount" />
+      <PropertyRef Name="CurrencyCode" />
+      <PropertyRef Name="StoreLocationId" />
+      <PropertyRef Name="CustomerId" />
+      <PropertyRef Name="PaymentTermsInDays" />
+      <PropertyRef Name="PaidAmount" />
+      <PropertyRef Name="TransactionCategory" />
+      <PropertyRef Name="CustomerTaxExempted" />
+      <PropertyRef Name="CustomerTypeId" />
+      <PropertyRef Name="DeliveryCost" />
+      <PropertyRef Name="RequirePickup" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="DateCreated" />
+      <PropertyRef Name="InventoryId" />
+      <PropertyRef Name="UnitOfRentId" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="Period" />
+      <PropertyRef Name="UnitCost" />
+      <PropertyRef Name="TaxRate" />
+      <PropertyRef Name="ItemDescription" />
+      <PropertyRef Name="TotalDiscountAmount" />
+      <PropertyRef Name="DiscountAmount" />
+      <PropertyRef Name="CustomerNo" />
+      <PropertyRef Name="CustomerName" />
+      <PropertyRef Name="ContactNo1" />
+      <PropertyRef Name="ContactType1Id" />
+      <PropertyRef Name="PurchaseCost" />
+      <PropertyRef Name="BookCost" />
+      <PropertyRef Name="UseFulLifeCost" />
+      <PropertyRef Name="LastCost" />
+      <PropertyRef Name="IsTaxable" />
+      <PropertyRef Name="AddressLine1" />
+      <PropertyRef Name="AddressLine2" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="UnitOfMeasureDescription" />
+      <PropertyRef Name="PreparedBy" />
+      <PropertyRef Name="SecurityDepositAmount" />
+      <PropertyRef Name="DeliveryRequired" />
+      <PropertyRef Name="SubTotalAmount" />
+      <PropertyRef Name="SaleTransactionDetailId" />
+      <PropertyRef Name="SerialNo" />
+      <PropertyRef Name="Model" />
+      <PropertyRef Name="StoreName" />
+      <PropertyRef Name="TransactionTaxRate" />
+      <PropertyRef Name="DeliveryNo" />
+      <PropertyRef Name="SaleTransactionDeliveryDetailId" />
+      <PropertyRef Name="SaleTransactionDeliveryId" />
+      <PropertyRef Name="DeliveryDate" />
+      <PropertyRef Name="QuantityDelivered" />
+      <PropertyRef Name="ItemNo" />
+      <PropertyRef Name="UnitOfMeasureCode" />
+      <PropertyRef Name="BrandName" />
+      <PropertyRef Name="SizeDescription" />
+    </Key>
+    <Property Name="SaleTransactionId" Type="int" Nullable="false" />
+    <Property Name="TransactionNo" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+    <Property Name="TransactionAmount" Type="money" Nullable="false" />
+    <Property Name="TaxAmount" Type="money" Nullable="false" />
+    <Property Name="CurrencyCode" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="StoreLocationId" Type="int" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="PaymentTermsInDays" Type="int" Nullable="false" />
+    <Property Name="PaidAmount" Type="money" Nullable="false" />
+    <Property Name="TransactionCategory" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="CustomerTaxExempted" Type="bit" Nullable="false" />
+    <Property Name="CustomerTypeId" Type="int" Nullable="false" />
+    <Property Name="PurchaseOrderNo" Type="varchar" MaxLength="25" />
+    <Property Name="SiteAddressLine1" Type="varchar" MaxLength="50" />
+    <Property Name="SiteAddressLine2" Type="varchar" MaxLength="50" />
+    <Property Name="SiteCity" Type="varchar" MaxLength="50" />
+    <Property Name="VoidRequested" Type="bit" />
+    <Property Name="VoidRequestReason" Type="varchar" MaxLength="250" />
+    <Property Name="VoidRequestedBy" Type="varchar" MaxLength="25" />
+    <Property Name="VoidRequestDate" Type="datetime" />
+    <Property Name="VoidRequestStatusId" Type="varchar" MaxLength="25" />
+    <Property Name="VoidStatusEffectedBy" Type="varchar" MaxLength="25" />
+    <Property Name="VoidStatusEffectedDate" Type="datetime" />
+    <Property Name="DeliveryCost" Type="money" Nullable="false" />
+    <Property Name="RequirePickup" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="QuotationId" Type="int" />
+    <Property Name="InventoryId" Type="int" Nullable="false" />
+    <Property Name="UnitOfRentId" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Period" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="UnitCost" Type="money" Nullable="false" />
+    <Property Name="TaxRate" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="ItemDescription" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="TotalReturnedQuantity" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="TotalDiscountAmount" Type="money" Nullable="false" />
+    <Property Name="DiscountAmount" Type="money" Nullable="false" />
+    <Property Name="CustomerNo" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContactNo1" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="ContactType1Id" Type="int" Nullable="false" />
+    <Property Name="ContactNo2" Type="char" MaxLength="15" />
+    <Property Name="ContactType2Id" Type="int" />
+    <Property Name="FaxNo" Type="char" MaxLength="15" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+    <Property Name="PurchaseCost" Type="money" Nullable="false" />
+    <Property Name="BookCost" Type="money" Nullable="false" />
+    <Property Name="UseFulLifeCost" Type="money" Nullable="false" />
+    <Property Name="LastCost" Type="money" Nullable="false" />
+    <Property Name="IsTaxable" Type="bit" Nullable="false" />
+    <Property Name="AddressLine1" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddressLine2" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UnitOfMeasureDescription" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ExtPrice" Type="decimal" Precision="38" Scale="6" />
+    <Property Name="PreparedBy" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="SecurityDepositAmount" Type="money" Nullable="false" />
+    <Property Name="SecurityDepositReturned" Type="bit" />
+    <Property Name="DateSecurityDepositReturned" Type="datetime" />
+    <Property Name="SecurityDepositReturnedBy" Type="varchar" MaxLength="25" />
+    <Property Name="DeliveryRequired" Type="bit" Nullable="false" />
+    <Property Name="SubTotalAmount" Type="money" Nullable="false" />
+    <Property Name="TotalQuantityDelivered" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="SaleTransactionDetailId" Type="int" Nullable="false" />
+    <Property Name="SerialNo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Model" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="StoreName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="OutstandingAmount" Type="decimal" Precision="19" Scale="4" />
+    <Property Name="RelativeSaleTransactionDetailId" Type="int" />
+    <Property Name="TransactionTaxRate" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="DeliveryNo" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ActualRentalStartDate" Type="datetime" />
+    <Property Name="ActualRentalReturnDueDate" Type="datetime" />
+    <Property Name="SaleTransactionDeliveryDetailId" Type="int" Nullable="false" />
+    <Property Name="SaleTransactionDeliveryId" Type="int" Nullable="false" />
+    <Property Name="DeliveryDate" Type="datetime" Nullable="false" />
+    <Property Name="QuantityDelivered" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="ItemNo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="UnitOfMeasureCode" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="BrandName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="SizeDescription" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'RentalManagementDB.dbo.SaleTransactionView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SaleTransactionView">
+    <Key>
+      <PropertyRef Name="SaleTransactionId" />
+      <PropertyRef Name="TransactionNo" />
+      <PropertyRef Name="TransactionDate" />
+      <PropertyRef Name="TransactionAmount" />
+      <PropertyRef Name="TaxAmount" />
+      <PropertyRef Name="CurrencyCode" />
+      <PropertyRef Name="StoreLocationId" />
+      <PropertyRef Name="CustomerId" />
+      <PropertyRef Name="PaymentTermsInDays" />
+      <PropertyRef Name="PaidAmount" />
+      <PropertyRef Name="TransactionCategory" />
+      <PropertyRef Name="CustomerTaxExempted" />
+      <PropertyRef Name="CustomerTypeId" />
+      <PropertyRef Name="DeliveryCost" />
+      <PropertyRef Name="RequirePickup" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="DateCreated" />
+      <PropertyRef Name="InventoryId" />
+      <PropertyRef Name="UnitOfRentId" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="Period" />
+      <PropertyRef Name="UnitCost" />
+      <PropertyRef Name="TaxRate" />
+      <PropertyRef Name="ItemDescription" />
+      <PropertyRef Name="TotalDiscountAmount" />
+      <PropertyRef Name="DiscountAmount" />
+      <PropertyRef Name="CustomerNo" />
+      <PropertyRef Name="CustomerName" />
+      <PropertyRef Name="ContactNo1" />
+      <PropertyRef Name="ContactType1Id" />
+      <PropertyRef Name="ItemNo" />
+      <PropertyRef Name="PurchaseCost" />
+      <PropertyRef Name="BookCost" />
+      <PropertyRef Name="UseFulLifeCost" />
+      <PropertyRef Name="LastCost" />
+      <PropertyRef Name="IsTaxable" />
+      <PropertyRef Name="AddressLine1" />
+      <PropertyRef Name="AddressLine2" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="UnitOfMeasureCode" />
+      <PropertyRef Name="UnitOfMeasureDescription" />
+      <PropertyRef Name="PreparedBy" />
+      <PropertyRef Name="SecurityDepositAmount" />
+      <PropertyRef Name="DeliveryRequired" />
+      <PropertyRef Name="SubTotalAmount" />
+      <PropertyRef Name="SaleTransactionDetailId" />
+      <PropertyRef Name="SerialNo" />
+      <PropertyRef Name="Model" />
+      <PropertyRef Name="BrandName" />
+      <PropertyRef Name="SizeDescription" />
+      <PropertyRef Name="StoreName" />
+      <PropertyRef Name="TransactionTaxRate" />
+    </Key>
+    <Property Name="SaleTransactionId" Type="int" Nullable="false" />
+    <Property Name="TransactionNo" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="TransactionDate" Type="datetime" Nullable="false" />
+    <Property Name="TransactionAmount" Type="money" Nullable="false" />
+    <Property Name="TaxAmount" Type="money" Nullable="false" />
+    <Property Name="CurrencyCode" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="StoreLocationId" Type="int" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="PaymentTermsInDays" Type="int" Nullable="false" />
+    <Property Name="PaidAmount" Type="money" Nullable="false" />
+    <Property Name="TransactionCategory" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="CustomerTaxExempted" Type="bit" Nullable="false" />
+    <Property Name="CustomerTypeId" Type="int" Nullable="false" />
+    <Property Name="PurchaseOrderNo" Type="varchar" MaxLength="25" />
+    <Property Name="SiteAddressLine1" Type="varchar" MaxLength="50" />
+    <Property Name="SiteAddressLine2" Type="varchar" MaxLength="50" />
+    <Property Name="SiteCity" Type="varchar" MaxLength="50" />
+    <Property Name="VoidRequested" Type="bit" />
+    <Property Name="VoidRequestReason" Type="varchar" MaxLength="250" />
+    <Property Name="VoidRequestedBy" Type="varchar" MaxLength="25" />
+    <Property Name="VoidRequestDate" Type="datetime" />
+    <Property Name="VoidRequestStatusId" Type="varchar" MaxLength="25" />
+    <Property Name="VoidStatusEffectedBy" Type="varchar" MaxLength="25" />
+    <Property Name="VoidStatusEffectedDate" Type="datetime" />
+    <Property Name="DeliveryCost" Type="money" Nullable="false" />
+    <Property Name="RequirePickup" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="QuotationId" Type="int" />
+    <Property Name="InventoryId" Type="int" Nullable="false" />
+    <Property Name="UnitOfRentId" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Quantity" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="Period" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="UnitCost" Type="money" Nullable="false" />
+    <Property Name="TaxRate" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="ItemDescription" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="RentalReturnDueDate" Type="datetime" />
+    <Property Name="TotalReturnedQuantity" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="TotalDiscountAmount" Type="money" Nullable="false" />
+    <Property Name="DiscountAmount" Type="money" Nullable="false" />
+    <Property Name="CustomerNo" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="CustomerName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContactNo1" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="ContactType1Id" Type="int" Nullable="false" />
+    <Property Name="ContactNo2" Type="char" MaxLength="15" />
+    <Property Name="ContactType2Id" Type="int" />
+    <Property Name="FaxNo" Type="char" MaxLength="15" />
+    <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+    <Property Name="ItemNo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="PurchaseCost" Type="money" Nullable="false" />
+    <Property Name="BookCost" Type="money" Nullable="false" />
+    <Property Name="UseFulLifeCost" Type="money" Nullable="false" />
+    <Property Name="LastCost" Type="money" Nullable="false" />
+    <Property Name="IsTaxable" Type="bit" Nullable="false" />
+    <Property Name="AddressLine1" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AddressLine2" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UnitOfMeasureCode" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="UnitOfMeasureDescription" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ExtPrice" Type="decimal" Precision="38" Scale="6" />
+    <Property Name="PreparedBy" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="SecurityDepositAmount" Type="money" Nullable="false" />
+    <Property Name="SecurityDepositReturned" Type="bit" />
+    <Property Name="DateSecurityDepositReturned" Type="datetime" />
+    <Property Name="SecurityDepositReturnedBy" Type="varchar" MaxLength="25" />
+    <Property Name="DeliveryRequired" Type="bit" Nullable="false" />
+    <Property Name="SubTotalAmount" Type="money" Nullable="false" />
+    <Property Name="TotalQuantityDelivered" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="SaleTransactionDetailId" Type="int" Nullable="false" />
+    <Property Name="SerialNo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Model" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="BrandName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="SizeDescription" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="StoreName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="OutstandingAmount" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="RentalStartDate" Type="datetime" />
+    <Property Name="RelativeSaleTransactionDetailId" Type="int" />
+    <Property Name="TransactionTaxRate" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="TotalAmountDue" Type="money" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'RentalManagementDB.dbo.SysUserAuditView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SysUserAuditView">
+    <Key>
+      <PropertyRef Name="SystemUserId" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="LogInTime" />
+    </Key>
+    <Property Name="SystemUserId" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="25" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="LogInTime" Type="datetime" Nullable="false" />
+    <Property Name="LogOutTime" Type="datetime" />
+    <Property Name="TotalMinutesSpent" Type="int" />
+    <Property Name="Days" Type="int" />
+    <Property Name="Hours" Type="int" />
+    <Property Name="Minutes" Type="int" />
+    <Property Name="TotalTimeSpent" Type="varchar" MaxLength="116" />
+    <Property Name="ConvertedTimeIn" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="RentalManagementDBModelStoreContainer">
+    <EntitySet Name="Holiday" EntityType="Self.Holiday" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SystemSecurityConfiguration" EntityType="Self.SystemSecurityConfiguration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SystemUsers" EntityType="Self.SystemUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SystemUserSettings" EntityType="Self.SystemUserSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SaleTransactionDeliveryView" EntityType="Self.SaleTransactionDeliveryView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SaleTransactionDeliveryView].[SaleTransactionId] AS [SaleTransactionId], 
+    [SaleTransactionDeliveryView].[TransactionNo] AS [TransactionNo], 
+    [SaleTransactionDeliveryView].[TransactionDate] AS [TransactionDate], 
+    [SaleTransactionDeliveryView].[TransactionAmount] AS [TransactionAmount], 
+    [SaleTransactionDeliveryView].[TaxAmount] AS [TaxAmount], 
+    [SaleTransactionDeliveryView].[CurrencyCode] AS [CurrencyCode], 
+    [SaleTransactionDeliveryView].[StoreLocationId] AS [StoreLocationId], 
+    [SaleTransactionDeliveryView].[CustomerId] AS [CustomerId], 
+    [SaleTransactionDeliveryView].[PaymentTermsInDays] AS [PaymentTermsInDays], 
+    [SaleTransactionDeliveryView].[PaidAmount] AS [PaidAmount], 
+    [SaleTransactionDeliveryView].[TransactionCategory] AS [TransactionCategory], 
+    [SaleTransactionDeliveryView].[CustomerTaxExempted] AS [CustomerTaxExempted], 
+    [SaleTransactionDeliveryView].[CustomerTypeId] AS [CustomerTypeId], 
+    [SaleTransactionDeliveryView].[PurchaseOrderNo] AS [PurchaseOrderNo], 
+    [SaleTransactionDeliveryView].[SiteAddressLine1] AS [SiteAddressLine1], 
+    [SaleTransactionDeliveryView].[SiteAddressLine2] AS [SiteAddressLine2], 
+    [SaleTransactionDeliveryView].[SiteCity] AS [SiteCity], 
+    [SaleTransactionDeliveryView].[VoidRequested] AS [VoidRequested], 
+    [SaleTransactionDeliveryView].[VoidRequestReason] AS [VoidRequestReason], 
+    [SaleTransactionDeliveryView].[VoidRequestedBy] AS [VoidRequestedBy], 
+    [SaleTransactionDeliveryView].[VoidRequestDate] AS [VoidRequestDate], 
+    [SaleTransactionDeliveryView].[VoidRequestStatusId] AS [VoidRequestStatusId], 
+    [SaleTransactionDeliveryView].[VoidStatusEffectedBy] AS [VoidStatusEffectedBy], 
+    [SaleTransactionDeliveryView].[VoidStatusEffectedDate] AS [VoidStatusEffectedDate], 
+    [SaleTransactionDeliveryView].[DeliveryCost] AS [DeliveryCost], 
+    [SaleTransactionDeliveryView].[RequirePickup] AS [RequirePickup], 
+    [SaleTransactionDeliveryView].[CreatedBy] AS [CreatedBy], 
+    [SaleTransactionDeliveryView].[DateCreated] AS [DateCreated], 
+    [SaleTransactionDeliveryView].[QuotationId] AS [QuotationId], 
+    [SaleTransactionDeliveryView].[InventoryId] AS [InventoryId], 
+    [SaleTransactionDeliveryView].[UnitOfRentId] AS [UnitOfRentId], 
+    [SaleTransactionDeliveryView].[Quantity] AS [Quantity], 
+    [SaleTransactionDeliveryView].[Period] AS [Period], 
+    [SaleTransactionDeliveryView].[UnitCost] AS [UnitCost], 
+    [SaleTransactionDeliveryView].[TaxRate] AS [TaxRate], 
+    [SaleTransactionDeliveryView].[ItemDescription] AS [ItemDescription], 
+    [SaleTransactionDeliveryView].[TotalReturnedQuantity] AS [TotalReturnedQuantity], 
+    [SaleTransactionDeliveryView].[TotalDiscountAmount] AS [TotalDiscountAmount], 
+    [SaleTransactionDeliveryView].[DiscountAmount] AS [DiscountAmount], 
+    [SaleTransactionDeliveryView].[CustomerNo] AS [CustomerNo], 
+    [SaleTransactionDeliveryView].[CustomerName] AS [CustomerName], 
+    [SaleTransactionDeliveryView].[ContactNo1] AS [ContactNo1], 
+    [SaleTransactionDeliveryView].[ContactType1Id] AS [ContactType1Id], 
+    [SaleTransactionDeliveryView].[ContactNo2] AS [ContactNo2], 
+    [SaleTransactionDeliveryView].[ContactType2Id] AS [ContactType2Id], 
+    [SaleTransactionDeliveryView].[FaxNo] AS [FaxNo], 
+    [SaleTransactionDeliveryView].[EmailAddress] AS [EmailAddress], 
+    [SaleTransactionDeliveryView].[PurchaseCost] AS [PurchaseCost], 
+    [SaleTransactionDeliveryView].[BookCost] AS [BookCost], 
+    [SaleTransactionDeliveryView].[UseFulLifeCost] AS [UseFulLifeCost], 
+    [SaleTransactionDeliveryView].[LastCost] AS [LastCost], 
+    [SaleTransactionDeliveryView].[IsTaxable] AS [IsTaxable], 
+    [SaleTransactionDeliveryView].[AddressLine1] AS [AddressLine1], 
+    [SaleTransactionDeliveryView].[AddressLine2] AS [AddressLine2], 
+    [SaleTransactionDeliveryView].[City] AS [City], 
+    [SaleTransactionDeliveryView].[UnitOfMeasureDescription] AS [UnitOfMeasureDescription], 
+    [SaleTransactionDeliveryView].[ExtPrice] AS [ExtPrice], 
+    [SaleTransactionDeliveryView].[PreparedBy] AS [PreparedBy], 
+    [SaleTransactionDeliveryView].[SecurityDepositAmount] AS [SecurityDepositAmount], 
+    [SaleTransactionDeliveryView].[SecurityDepositReturned] AS [SecurityDepositReturned], 
+    [SaleTransactionDeliveryView].[DateSecurityDepositReturned] AS [DateSecurityDepositReturned], 
+    [SaleTransactionDeliveryView].[SecurityDepositReturnedBy] AS [SecurityDepositReturnedBy], 
+    [SaleTransactionDeliveryView].[DeliveryRequired] AS [DeliveryRequired], 
+    [SaleTransactionDeliveryView].[SubTotalAmount] AS [SubTotalAmount], 
+    [SaleTransactionDeliveryView].[TotalQuantityDelivered] AS [TotalQuantityDelivered], 
+    [SaleTransactionDeliveryView].[SaleTransactionDetailId] AS [SaleTransactionDetailId], 
+    [SaleTransactionDeliveryView].[SerialNo] AS [SerialNo], 
+    [SaleTransactionDeliveryView].[Model] AS [Model], 
+    [SaleTransactionDeliveryView].[StoreName] AS [StoreName], 
+    [SaleTransactionDeliveryView].[OutstandingAmount] AS [OutstandingAmount], 
+    [SaleTransactionDeliveryView].[RelativeSaleTransactionDetailId] AS [RelativeSaleTransactionDetailId], 
+    [SaleTransactionDeliveryView].[TransactionTaxRate] AS [TransactionTaxRate], 
+    [SaleTransactionDeliveryView].[DeliveryNo] AS [DeliveryNo], 
+    [SaleTransactionDeliveryView].[ActualRentalStartDate] AS [ActualRentalStartDate], 
+    [SaleTransactionDeliveryView].[ActualRentalReturnDueDate] AS [ActualRentalReturnDueDate], 
+    [SaleTransactionDeliveryView].[SaleTransactionDeliveryDetailId] AS [SaleTransactionDeliveryDetailId], 
+    [SaleTransactionDeliveryView].[SaleTransactionDeliveryId] AS [SaleTransactionDeliveryId], 
+    [SaleTransactionDeliveryView].[DeliveryDate] AS [DeliveryDate], 
+    [SaleTransactionDeliveryView].[QuantityDelivered] AS [QuantityDelivered], 
+    [SaleTransactionDeliveryView].[ItemNo] AS [ItemNo], 
+    [SaleTransactionDeliveryView].[UnitOfMeasureCode] AS [UnitOfMeasureCode], 
+    [SaleTransactionDeliveryView].[BrandName] AS [BrandName], 
+    [SaleTransactionDeliveryView].[SizeDescription] AS [SizeDescription]
+    FROM [dbo].[SaleTransactionDeliveryView] AS [SaleTransactionDeliveryView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SaleTransactionView" EntityType="Self.SaleTransactionView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SaleTransactionView].[SaleTransactionId] AS [SaleTransactionId], 
+    [SaleTransactionView].[TransactionNo] AS [TransactionNo], 
+    [SaleTransactionView].[TransactionDate] AS [TransactionDate], 
+    [SaleTransactionView].[TransactionAmount] AS [TransactionAmount], 
+    [SaleTransactionView].[TaxAmount] AS [TaxAmount], 
+    [SaleTransactionView].[CurrencyCode] AS [CurrencyCode], 
+    [SaleTransactionView].[StoreLocationId] AS [StoreLocationId], 
+    [SaleTransactionView].[CustomerId] AS [CustomerId], 
+    [SaleTransactionView].[PaymentTermsInDays] AS [PaymentTermsInDays], 
+    [SaleTransactionView].[PaidAmount] AS [PaidAmount], 
+    [SaleTransactionView].[TransactionCategory] AS [TransactionCategory], 
+    [SaleTransactionView].[CustomerTaxExempted] AS [CustomerTaxExempted], 
+    [SaleTransactionView].[CustomerTypeId] AS [CustomerTypeId], 
+    [SaleTransactionView].[PurchaseOrderNo] AS [PurchaseOrderNo], 
+    [SaleTransactionView].[SiteAddressLine1] AS [SiteAddressLine1], 
+    [SaleTransactionView].[SiteAddressLine2] AS [SiteAddressLine2], 
+    [SaleTransactionView].[SiteCity] AS [SiteCity], 
+    [SaleTransactionView].[VoidRequested] AS [VoidRequested], 
+    [SaleTransactionView].[VoidRequestReason] AS [VoidRequestReason], 
+    [SaleTransactionView].[VoidRequestedBy] AS [VoidRequestedBy], 
+    [SaleTransactionView].[VoidRequestDate] AS [VoidRequestDate], 
+    [SaleTransactionView].[VoidRequestStatusId] AS [VoidRequestStatusId], 
+    [SaleTransactionView].[VoidStatusEffectedBy] AS [VoidStatusEffectedBy], 
+    [SaleTransactionView].[VoidStatusEffectedDate] AS [VoidStatusEffectedDate], 
+    [SaleTransactionView].[DeliveryCost] AS [DeliveryCost], 
+    [SaleTransactionView].[RequirePickup] AS [RequirePickup], 
+    [SaleTransactionView].[CreatedBy] AS [CreatedBy], 
+    [SaleTransactionView].[DateCreated] AS [DateCreated], 
+    [SaleTransactionView].[QuotationId] AS [QuotationId], 
+    [SaleTransactionView].[InventoryId] AS [InventoryId], 
+    [SaleTransactionView].[UnitOfRentId] AS [UnitOfRentId], 
+    [SaleTransactionView].[Quantity] AS [Quantity], 
+    [SaleTransactionView].[Period] AS [Period], 
+    [SaleTransactionView].[UnitCost] AS [UnitCost], 
+    [SaleTransactionView].[TaxRate] AS [TaxRate], 
+    [SaleTransactionView].[ItemDescription] AS [ItemDescription], 
+    [SaleTransactionView].[RentalReturnDueDate] AS [RentalReturnDueDate], 
+    [SaleTransactionView].[TotalReturnedQuantity] AS [TotalReturnedQuantity], 
+    [SaleTransactionView].[TotalDiscountAmount] AS [TotalDiscountAmount], 
+    [SaleTransactionView].[DiscountAmount] AS [DiscountAmount], 
+    [SaleTransactionView].[CustomerNo] AS [CustomerNo], 
+    [SaleTransactionView].[CustomerName] AS [CustomerName], 
+    [SaleTransactionView].[ContactNo1] AS [ContactNo1], 
+    [SaleTransactionView].[ContactType1Id] AS [ContactType1Id], 
+    [SaleTransactionView].[ContactNo2] AS [ContactNo2], 
+    [SaleTransactionView].[ContactType2Id] AS [ContactType2Id], 
+    [SaleTransactionView].[FaxNo] AS [FaxNo], 
+    [SaleTransactionView].[EmailAddress] AS [EmailAddress], 
+    [SaleTransactionView].[ItemNo] AS [ItemNo], 
+    [SaleTransactionView].[PurchaseCost] AS [PurchaseCost], 
+    [SaleTransactionView].[BookCost] AS [BookCost], 
+    [SaleTransactionView].[UseFulLifeCost] AS [UseFulLifeCost], 
+    [SaleTransactionView].[LastCost] AS [LastCost], 
+    [SaleTransactionView].[IsTaxable] AS [IsTaxable], 
+    [SaleTransactionView].[AddressLine1] AS [AddressLine1], 
+    [SaleTransactionView].[AddressLine2] AS [AddressLine2], 
+    [SaleTransactionView].[City] AS [City], 
+    [SaleTransactionView].[UnitOfMeasureCode] AS [UnitOfMeasureCode], 
+    [SaleTransactionView].[UnitOfMeasureDescription] AS [UnitOfMeasureDescription], 
+    [SaleTransactionView].[ExtPrice] AS [ExtPrice], 
+    [SaleTransactionView].[PreparedBy] AS [PreparedBy], 
+    [SaleTransactionView].[SecurityDepositAmount] AS [SecurityDepositAmount], 
+    [SaleTransactionView].[SecurityDepositReturned] AS [SecurityDepositReturned], 
+    [SaleTransactionView].[DateSecurityDepositReturned] AS [DateSecurityDepositReturned], 
+    [SaleTransactionView].[SecurityDepositReturnedBy] AS [SecurityDepositReturnedBy], 
+    [SaleTransactionView].[DeliveryRequired] AS [DeliveryRequired], 
+    [SaleTransactionView].[SubTotalAmount] AS [SubTotalAmount], 
+    [SaleTransactionView].[TotalQuantityDelivered] AS [TotalQuantityDelivered], 
+    [SaleTransactionView].[SaleTransactionDetailId] AS [SaleTransactionDetailId], 
+    [SaleTransactionView].[SerialNo] AS [SerialNo], 
+    [SaleTransactionView].[Model] AS [Model], 
+    [SaleTransactionView].[BrandName] AS [BrandName], 
+    [SaleTransactionView].[SizeDescription] AS [SizeDescription], 
+    [SaleTransactionView].[StoreName] AS [StoreName], 
+    [SaleTransactionView].[OutstandingAmount] AS [OutstandingAmount], 
+    [SaleTransactionView].[RentalStartDate] AS [RentalStartDate], 
+    [SaleTransactionView].[RelativeSaleTransactionDetailId] AS [RelativeSaleTransactionDetailId], 
+    [SaleTransactionView].[TransactionTaxRate] AS [TransactionTaxRate], 
+    [SaleTransactionView].[TotalAmountDue] AS [TotalAmountDue]
+    FROM [dbo].[SaleTransactionView] AS [SaleTransactionView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="SysUserAuditView" EntityType="Self.SysUserAuditView" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SysUserAuditView].[SystemUserId] AS [SystemUserId], 
+    [SysUserAuditView].[FirstName] AS [FirstName], 
+    [SysUserAuditView].[MiddleName] AS [MiddleName], 
+    [SysUserAuditView].[LastName] AS [LastName], 
+    [SysUserAuditView].[UserName] AS [UserName], 
+    [SysUserAuditView].[LogInTime] AS [LogInTime], 
+    [SysUserAuditView].[LogOutTime] AS [LogOutTime], 
+    [SysUserAuditView].[TotalMinutesSpent] AS [TotalMinutesSpent], 
+    [SysUserAuditView].[Days] AS [Days], 
+    [SysUserAuditView].[Hours] AS [Hours], 
+    [SysUserAuditView].[Minutes] AS [Minutes], 
+    [SysUserAuditView].[TotalTimeSpent] AS [TotalTimeSpent], 
+    [SysUserAuditView].[ConvertedTimeIn] AS [ConvertedTimeIn]
+    FROM [dbo].[SysUserAuditView] AS [SysUserAuditView]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

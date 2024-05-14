@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RentalManagementDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="SystemSecurityConfiguration">
+    <Key>
+      <PropertyRef Name="SystemSecurityConfigurationId" />
+    </Key>
+    <Property Name="SystemSecurityConfigurationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EnableAutoLogOut" Type="Boolean" Nullable="false" />
+    <Property Name="AutoLogOutMinutes" Type="Int32" Nullable="false" />
+    <Property Name="AutoLockUserAccount" Type="Boolean" Nullable="false" />
+    <Property Name="NoOfUnsuccessfulAttempts" Type="Int32" Nullable="false" />
+    <Property Name="ImposePasswordChange" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordValidityDays" Type="Int32" Nullable="false" />
+    <Property Name="AllowPasswordRepeat" Type="Boolean" Nullable="false" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="SystemUserSetting">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MdiParentImage" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="RentalManagementDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="SystemSecurityConfigurations" EntityType="Self.SystemSecurityConfiguration" />
+    <EntitySet Name="SystemUserSettings" EntityType="Self.SystemUserSetting" />
+    <EntitySet Name="SystemUsers" EntityType="RentalManagementDBModel.SystemUser" />
+    <EntitySet Name="SaleTransactionViews" EntityType="RentalManagementDBModel.SaleTransactionView" />
+    <EntitySet Name="Holidays" EntityType="RentalManagementDBModel.Holiday" />
+    <EntitySet Name="SysUserAuditViews" EntityType="RentalManagementDBModel.SysUserAuditView" />
+    <EntitySet Name="SaleTransactionDeliveryViews" EntityType="RentalManagementDBModel.SaleTransactionDeliveryView" />
+  </EntityContainer>
+  <EntityType Name="SystemUser">
+    <Key>
+      <PropertyRef Name="SystemUserId" />
+    </Key>
+    <Property Name="SystemUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="AccountExpirable" Type="Boolean" Nullable="false" />
+    <Property Name="ActivePeriod" Type="Int32" />
+    <Property Name="RequireUserChange" Type="Boolean" Nullable="false" />
+    <Property Name="ExpirableValidationDate" Type="DateTime" Precision="3" />
+    <Property Name="CurrentlyLoggedIn" Type="Boolean" />
+    <Property Name="LastPasswordChange" Type="DateTime" Precision="3" />
+    <Property Name="AccountLocked" Type="Boolean" Nullable="false" />
+    <Property Name="StoreLocationId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="SystemUserGroupId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SaleTransactionView">
+    <Key>
+      <PropertyRef Name="SaleTransactionId" />
+      <PropertyRef Name="TransactionNo" />
+      <PropertyRef Name="TransactionDate" />
+      <PropertyRef Name="TransactionAmount" />
+      <PropertyRef Name="TaxAmount" />
+      <PropertyRef Name="CurrencyCode" />
+      <PropertyRef Name="StoreLocationId" />
+      <PropertyRef Name="CustomerId" />
+      <PropertyRef Name="PaymentTermsInDays" />
+      <PropertyRef Name="PaidAmount" />
+      <PropertyRef Name="TransactionCategory" />
+      <PropertyRef Name="CustomerTaxExempted" />
+      <PropertyRef Name="CustomerTypeId" />
+      <PropertyRef Name="DeliveryCost" />
+      <PropertyRef Name="RequirePickup" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="DateCreated" />
+      <PropertyRef Name="InventoryId" />
+      <PropertyRef Name="UnitOfRentId" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="Period" />
+      <PropertyRef Name="UnitCost" />
+      <PropertyRef Name="TaxRate" />
+      <PropertyRef Name="ItemDescription" />
+      <PropertyRef Name="TotalDiscountAmount" />
+      <PropertyRef Name="DiscountAmount" />
+      <PropertyRef Name="CustomerNo" />
+      <PropertyRef Name="CustomerName" />
+      <PropertyRef Name="ContactNo1" />
+      <PropertyRef Name="ContactType1Id" />
+      <PropertyRef Name="ItemNo" />
+      <PropertyRef Name="PurchaseCost" />
+      <PropertyRef Name="BookCost" />
+      <PropertyRef Name="UseFulLifeCost" />
+      <PropertyRef Name="LastCost" />
+      <PropertyRef Name="IsTaxable" />
+      <PropertyRef Name="AddressLine1" />
+      <PropertyRef Name="AddressLine2" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="UnitOfMeasureCode" />
+      <PropertyRef Name="UnitOfMeasureDescription" />
+      <PropertyRef Name="PreparedBy" />
+      <PropertyRef Name="SecurityDepositAmount" />
+      <PropertyRef Name="DeliveryRequired" />
+      <PropertyRef Name="SubTotalAmount" />
+      <PropertyRef Name="SaleTransactionDetailId" />
+      <PropertyRef Name="SerialNo" />
+      <PropertyRef Name="Model" />
+      <PropertyRef Name="BrandName" />
+      <PropertyRef Name="SizeDescription" />
+      <PropertyRef Name="StoreName" />
+      <PropertyRef Name="TransactionTaxRate" />
+    </Key>
+    <Property Name="SaleTransactionId" Type="Int32" Nullable="false" />
+    <Property Name="TransactionNo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TransactionAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="TaxAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="CurrencyCode" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="StoreLocationId" Type="Int32" Nullable="false" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="PaymentTermsInDays" Type="Int32" Nullable="false" />
+    <Property Name="PaidAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="TransactionCategory" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerTaxExempted" Type="Boolean" Nullable="false" />
+    <Property Name="CustomerTypeId" Type="Int32" Nullable="false" />
+    <Property Name="PurchaseOrderNo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="SiteAddressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SiteAddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SiteCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VoidRequested" Type="Boolean" />
+    <Property Name="VoidRequestReason" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="VoidRequestedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="VoidRequestDate" Type="DateTime" Precision="3" />
+    <Property Name="VoidRequestStatusId" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="VoidStatusEffectedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="VoidStatusEffectedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeliveryCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="RequirePickup" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="QuotationId" Type="Int32" />
+    <Property Name="InventoryId" Type="Int32" Nullable="false" />
+    <Property Name="UnitOfRentId" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="Period" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="UnitCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="TaxRate" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="ItemDescription" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="RentalReturnDueDate" Type="DateTime" Precision="3" />
+    <Property Name="TotalReturnedQuantity" Type="Decimal" Precision="7" Scale="2" />
+    <Property Name="TotalDiscountAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="DiscountAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="CustomerNo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ContactNo1" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="ContactType1Id" Type="Int32" Nullable="false" />
+    <Property Name="ContactNo2" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="ContactType2Id" Type="Int32" />
+    <Property Name="FaxNo" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ItemNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PurchaseCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="BookCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="UseFulLifeCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="LastCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="IsTaxable" Type="Boolean" Nullable="false" />
+    <Property Name="AddressLine1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AddressLine2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UnitOfMeasureCode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="UnitOfMeasureDescription" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ExtPrice" Type="Decimal" Precision="38" Scale="6" />
+    <Property Name="PreparedBy" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="SecurityDepositAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="SecurityDepositReturned" Type="Boolean" />
+    <Property Name="DateSecurityDepositReturned" Type="DateTime" Precision="3" />
+    <Property Name="SecurityDepositReturnedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DeliveryRequired" Type="Boolean" Nullable="false" />
+    <Property Name="SubTotalAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="TotalQuantityDelivered" Type="Decimal" Precision="7" Scale="2" />
+    <Property Name="SaleTransactionDetailId" Type="Int32" Nullable="false" />
+    <Property Name="SerialNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Model" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="BrandName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="SizeDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="StoreName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OutstandingAmount" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="RentalStartDate" Type="DateTime" Precision="3" />
+    <Property Name="RelativeSaleTransactionDetailId" Type="Int32" />
+    <Property Name="TransactionTaxRate" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="TotalAmountDue" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="Holiday">
+    <Key>
+      <PropertyRef Name="HolidayId" />
+    </Key>
+    <Property Name="HolidayId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HolidayName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateOfHoliday" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsRecurringDate" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SysUserAuditView">
+    <Key>
+      <PropertyRef Name="SystemUserId" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="LogInTime" />
+    </Key>
+    <Property Name="SystemUserId" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LogInTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LogOutTime" Type="DateTime" Precision="3" />
+    <Property Name="TotalMinutesSpent" Type="Int32" />
+    <Property Name="Days" Type="Int32" />
+    <Property Name="Hours" Type="Int32" />
+    <Property Name="Minutes" Type="Int32" />
+    <Property Name="TotalTimeSpent" Type="String" MaxLength="116" FixedLength="false" Unicode="false" />
+    <Property Name="ConvertedTimeIn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SaleTransactionDeliveryView">
+    <Key>
+      <PropertyRef Name="SaleTransactionId" />
+      <PropertyRef Name="TransactionNo" />
+      <PropertyRef Name="TransactionDate" />
+      <PropertyRef Name="TransactionAmount" />
+      <PropertyRef Name="TaxAmount" />
+      <PropertyRef Name="CurrencyCode" />
+      <PropertyRef Name="StoreLocationId" />
+      <PropertyRef Name="CustomerId" />
+      <PropertyRef Name="PaymentTermsInDays" />
+      <PropertyRef Name="PaidAmount" />
+      <PropertyRef Name="TransactionCategory" />
+      <PropertyRef Name="CustomerTaxExempted" />
+      <PropertyRef Name="CustomerTypeId" />
+      <PropertyRef Name="DeliveryCost" />
+      <PropertyRef Name="RequirePickup" />
+      <PropertyRef Name="CreatedBy" />
+      <PropertyRef Name="DateCreated" />
+      <PropertyRef Name="InventoryId" />
+      <PropertyRef Name="UnitOfRentId" />
+      <PropertyRef Name="Quantity" />
+      <PropertyRef Name="Period" />
+      <PropertyRef Name="UnitCost" />
+      <PropertyRef Name="TaxRate" />
+      <PropertyRef Name="ItemDescription" />
+      <PropertyRef Name="TotalDiscountAmount" />
+      <PropertyRef Name="DiscountAmount" />
+      <PropertyRef Name="CustomerNo" />
+      <PropertyRef Name="CustomerName" />
+      <PropertyRef Name="ContactNo1" />
+      <PropertyRef Name="ContactType1Id" />
+      <PropertyRef Name="PurchaseCost" />
+      <PropertyRef Name="BookCost" />
+      <PropertyRef Name="UseFulLifeCost" />
+      <PropertyRef Name="LastCost" />
+      <PropertyRef Name="IsTaxable" />
+      <PropertyRef Name="AddressLine1" />
+      <PropertyRef Name="AddressLine2" />
+      <PropertyRef Name="City" />
+      <PropertyRef Name="UnitOfMeasureDescription" />
+      <PropertyRef Name="PreparedBy" />
+      <PropertyRef Name="SecurityDepositAmount" />
+      <PropertyRef Name="DeliveryRequired" />
+      <PropertyRef Name="SubTotalAmount" />
+      <PropertyRef Name="SaleTransactionDetailId" />
+      <PropertyRef Name="SerialNo" />
+      <PropertyRef Name="Model" />
+      <PropertyRef Name="StoreName" />
+      <PropertyRef Name="TransactionTaxRate" />
+      <PropertyRef Name="DeliveryNo" />
+      <PropertyRef Name="SaleTransactionDeliveryDetailId" />
+      <PropertyRef Name="SaleTransactionDeliveryId" />
+      <PropertyRef Name="DeliveryDate" />
+      <PropertyRef Name="QuantityDelivered" />
+      <PropertyRef Name="ItemNo" />
+      <PropertyRef Name="UnitOfMeasureCode" />
+      <PropertyRef Name="BrandName" />
+      <PropertyRef Name="SizeDescription" />
+    </Key>
+    <Property Name="SaleTransactionId" Type="Int32" Nullable="false" />
+    <Property Name="TransactionNo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TransactionAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="TaxAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="CurrencyCode" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="StoreLocationId" Type="Int32" Nullable="false" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="PaymentTermsInDays" Type="Int32" Nullable="false" />
+    <Property Name="PaidAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="TransactionCategory" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerTaxExempted" Type="Boolean" Nullable="false" />
+    <Property Name="CustomerTypeId" Type="Int32" Nullable="false" />
+    <Property Name="PurchaseOrderNo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="SiteAddressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SiteAddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SiteCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VoidRequested" Type="Boolean" />
+    <Property Name="VoidRequestReason" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="VoidRequestedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="VoidRequestDate" Type="DateTime" Precision="3" />
+    <Property Name="VoidRequestStatusId" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="VoidStatusEffectedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="VoidStatusEffectedDate" Type="DateTime" Precision="3" />
+    <Property Name="DeliveryCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="RequirePickup" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="QuotationId" Type="Int32" />
+    <Property Name="InventoryId" Type="Int32" Nullable="false" />
+    <Property Name="UnitOfRentId" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="Period" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="UnitCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="TaxRate" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="ItemDescription" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="TotalReturnedQuantity" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="TotalDiscountAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="DiscountAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="CustomerNo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ContactNo1" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="ContactType1Id" Type="Int32" Nullable="false" />
+    <Property Name="ContactNo2" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="ContactType2Id" Type="Int32" />
+    <Property Name="FaxNo" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PurchaseCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="BookCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="UseFulLifeCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="LastCost" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="IsTaxable" Type="Boolean" Nullable="false" />
+    <Property Name="AddressLine1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AddressLine2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UnitOfMeasureDescription" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ExtPrice" Type="Decimal" Precision="38" Scale="6" />
+    <Property Name="PreparedBy" Type="String" Nullable="false" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="SecurityDepositAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="SecurityDepositReturned" Type="Boolean" />
+    <Property Name="DateSecurityDepositReturned" Type="DateTime" Precision="3" />
+    <Property Name="SecurityDepositReturnedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DeliveryRequired" Type="Boolean" Nullable="false" />
+    <Property Name="SubTotalAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="TotalQuantityDelivered" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="SaleTransactionDetailId" Type="Int32" Nullable="false" />
+    <Property Name="SerialNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Model" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="StoreName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OutstandingAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="RelativeSaleTransactionDetailId" Type="Int32" />
+    <Property Name="TransactionTaxRate" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="DeliveryNo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ActualRentalStartDate" Type="DateTime" Precision="3" />
+    <Property Name="ActualRentalReturnDueDate" Type="DateTime" Precision="3" />
+    <Property Name="SaleTransactionDeliveryDetailId" Type="Int32" Nullable="false" />
+    <Property Name="SaleTransactionDeliveryId" Type="Int32" Nullable="false" />
+    <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="QuantityDelivered" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="ItemNo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UnitOfMeasureCode" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="BrandName" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="SizeDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>
